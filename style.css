@@ -1,0 +1,171 @@
+body {
+  /* ページ全体の背景色を薄いピンクに設定 */
+  background: #ffe4e1;
+  /* 角丸フォントなど、やわらかい印象のフォントを指定 */
+  font-family: 'Rounded M+ 1c', sans-serif;
+  text-align: center;
+  /* テキストを中央寄せ */
+  padding: 2rem;
+  /* ページ上下左右に余白をつける */
+}
+
+/* 親要素を縦並び flex に */
+#app {
+  display: flex;
+  flex-direction: column;  /* 上から下へ積む */
+  align-items: center;     /* 横中央揃え */
+  gap: 1rem;               /* ロゴとスライダーの間隔 */
+  padding: 1rem;           /* 全体の余白 */
+}
+
+/* ロゴ画面を中央に寄せる例 */
+#logo-screen {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* 画面全体高 */
+  background: #ffe4e1; /* 背景色はお好みで */
+}
+
+/* ロゴのサイズ調整 */
+#bear-logo {
+  max-width: 200px;        /* お好みで調整 */
+  width: 80%;              /* レスポンシブ対応 */
+  height: auto;
+  margin: 0;               /* 上下余白リセット */
+}
+
+#logo-screen img {
+  max-width: 20%; /* 横幅を画面幅の20%以下に */
+  height: auto;
+}
+
+.container {
+  /* コンテンツ幅を最大8800pxに制限 */
+  max-width: 800px;
+  margin: 0 auto;
+  /* 左右の余白を自動にして中央寄せ */
+  background: #f6f6ef;
+  /* 背景をクリーム色に */
+  border-radius: 20px;
+  /* 角を丸くする */
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  /* ソフトな影をつける */
+  padding: 1.5rem;
+  /* 内側余白 */
+}
+
+.bear-area {
+  position: relative;
+  /* 子要素の吹き出しを絶対配置できるように */
+  margin-bottom: 1rem;
+  /* 下に余白をつける */
+}
+
+#bear {
+  width: 150px;
+  /* くまちゃん画像の横幅を150pxに固定 */
+}
+
+.speech {
+  position: absolute;
+  /* 親要素（.bear-area）からの相対配置 */
+  top: -10px;
+  /* 上方向に少しはみ出して表示 */
+  left: 50%;
+  transform: translateX(-50%);
+  /* 横中央に寄せる */
+  background: #fafad2;
+  /* 吹き出しの背景色（レモン系） */
+  padding: 0.5rem 1rem;
+  /* 吹き出し内の余白 */
+  border-radius: 12px;
+  /* 吹き出しの角を丸める */
+  opacity: 0;
+  /* 初期は透明（非表示） */
+  font-size: 1rem;
+  font-weight: bold;
+  transition: opacity 0.3s ease;
+  /* 表示切り替え時にアニメーション */
+}
+
+.speech.show {
+  opacity: 1;
+  /* .show クラスがつくと表示状態に */
+}
+
+.buttons button {
+  background: #b0e0e6;
+  /* 水色パステル */
+  border: none;
+  border-radius: 10px;
+  padding: 0.8rem 1.2rem;
+  margin: 0.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform 0.1s;
+}
+
+.buttons button:active {
+  transform: scale(0.95);
+  /* 押したときに少し縮む */
+}
+
+.result {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+  /* 勝敗結果を目立たせる */
+}
+/* ===================================================
+   ページ読み込み時に図を左からスライドインさせる設定
+   =================================================== */
+
+/* ラッパー：見切れる領域 */
+.slider {
+  width: 100%;      /* 横幅いっぱい */
+  overflow: hidden; /* はみ出し部分を隠す */
+  position: relative;
+}
+
+/* スライドさせる要素 */
+.slide {
+  transform: translateX(-100%);       /* 初期位置：画面左外 */
+  animation: slide-in 3s ease-out forwards; /* 1秒かけて右へ */
+}
+
+/* アニメ定義 */
+@keyframes slide-in {
+  to {
+    transform: translateX(0);         /* 最終位置：元の場所 */
+  }
+}
+
+/* ────────── 追加: 親要素を横並びにして間隔をあける ────────── */
+#app {
+  display: flex;
+  flex-direction: column; /* 上下に積む */
+  align-items: center;    /* 中央揃え */
+  gap: 1rem;
+}
+
+#main-wrap {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+/* ────────── 追加: stats ボックスの見た目 ────────── */
+#stats {
+  background: #fffaf0;     /* クリーム系の背景色 */
+  border-radius: 12px;     /* 角を丸くする */
+  padding: 1rem;           /* 内側余白を 1rem */
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 軽い影をつける */
+}
+
+/* ────────── 追加: はちみつポット画像のサイズ調整 ────────── */
+#honey-pots img {
+  width: 40px;        /* 横幅を 40px に固定 */
+  margin-right: 4px;  /* 画像同士の間隔を 4px */
+}
